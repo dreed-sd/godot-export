@@ -19,6 +19,7 @@ import {
   GODOT_BUILD_PATH,
   GODOT_PROJECT_FILE_PATH,
   EXPORT_PACK_ONLY,
+  IGNORE_EXIT_CODE,
   USE_GODOT_3,
   GODOT_EXPORT_TEMPLATES_PATH,
   CACHE_ACTIVE,
@@ -247,7 +248,7 @@ async function doExport(): Promise<BuildResult[]> {
       args.push('--verbose');
     }
     core.info(`🖥️ Exporting preset ${preset.name}`);
-    const result = await exec(godotExecutablePath, args);
+    const result = await exec(godotExecutablePath, args, { ignoreReturnCode: IGNORE_EXIT_CODE });
     if (result !== 0) {
       throw new Error('1 or more exports failed');
     }
@@ -339,7 +340,11 @@ async function addEditorSettings(): Promise<void> {
 /** Open the editor in headless mode once, to import all assets, creating the `.godot` directory if it doesn't exist. */
 async function importProject(): Promise<void> {
   core.startGroup('🎲 Import project');
-  await exec(godotExecutablePath, [GODOT_PROJECT_FILE_PATH, '--headless', '-e', '--quit']);
+  const args = [GODOT_PROJECT_FILE_PATH, '--headless', '-e', '--quit'];
+  if (GODOT_VERBOSE) {
+    args.push('--verbose');
+  }
+  await exec(godotExecutablePath, args, { ignoreReturnCode: IGNORE_EXIT_CODE });
   core.endGroup();
 }
 

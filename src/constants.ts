@@ -16,6 +16,7 @@ const GODOT_VERBOSE = core.getInput('verbose') === 'true';
 const ARCHIVE_ROOT_FOLDER = core.getInput('archive_root_folder') === 'true';
 const USE_GODOT_3 = core.getInput('use_godot_3') === 'true';
 const EXPORT_PACK_ONLY = core.getInput('export_as_pack') === 'true';
+const IGNORE_EXIT_CODE = core.getInput('ignore_exit_code') === 'true';
 
 const GODOT_WORKING_PATH = path.resolve(path.join(os.homedir(), '/.local/share/godot'));
 const GODOT_EXPORT_TEMPLATES_PATH = path.resolve(
@@ -38,6 +39,7 @@ export {
   CACHE_ACTIVE,
   EXPORT_DEBUG,
   EXPORT_PACK_ONLY,
+  IGNORE_EXIT_CODE,
   GENERATE_RELEASE_NOTES,
   GODOT_ARCHIVE_PATH,
   GODOT_BUILD_PATH,

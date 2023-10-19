@@ -43,6 +43,7 @@ Define at least 1 export preset by going to `Project -> Export` in the Godot edi
 | `verbose`                             | Use the `--verbose` flag when exporting.                                                                                                                                                                                                                                             | `boolean` | `false` | No       |
 | `use_godot_3`                         | Build using Godot 3 executable. **NOTE**: `godot_executable_download_url` and `godot_export_templates_download_url` still need to be configured to download the correct version.                                                                                                     | `boolean` | `false` | No       |
 | `export_as_pack`                      | Export project files as a .pck file                                                                                                                                                                                                                                                  | `boolean` | `false` | No       |
+| `ignore_exit_code`                    | Continue even if Godot executable returns a non-zero exit code.                                                                                                                                                                                                                      | `boolean` | `false` | No       |
 
 
 ### Action Outputs

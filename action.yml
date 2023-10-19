@@ -57,6 +57,10 @@ inputs:
     description: Export project files as a .pck file.
     default: false
     required: false
+  ignore_exit_code:
+    description: If "true" continue even if Godot executable returns a non-zero exit code.
+    default: false
+    required: false
 
 outputs:
   build_directory:
